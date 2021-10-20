@@ -11,15 +11,27 @@ import com.leidos.rest.code.sample.customer.CustomerNotFoundException;
 import com.leidos.rest.code.sample.customer.repository.CustomerRepository;
 import com.leidos.rest.code.sample.customer.service.CustomerService;
 
+/**
+ * CustomerServiceImpl Class for all Customer related operations
+ */
 @Service
 public class CustomerServiceImpl implements CustomerService {
 	@Autowired
 	private CustomerRepository customerRepository;
 
+	/**
+	 * retrieveAllCustomer Data
+	 * @return
+	 */
 	public List<Customer> retrieveAllCustomers() {
 		return customerRepository.findAll();
 	}
 
+	/**
+	 * retrieveCustomer Data
+	 * @param id
+	 * @return
+	 */
 	public Customer retrieveCustomer(long id) {
 		Optional<Customer> customer = customerRepository.findById(id);
 
@@ -29,14 +41,29 @@ public class CustomerServiceImpl implements CustomerService {
 		return customer.get();
 	}
 
+	/**
+	 * Delete Customer Record for given Id
+	 * @param id
+	 */
 	public void deleteCustomer(long id) {
 		customerRepository.deleteById(id);
 	}
 
+	/**
+	 * create Customer entry
+	 * @param customer
+	 * @return
+	 */
 	public Customer createCustomer(Customer customer) {
 		return customerRepository.save(customer);
 	}
 
+	/**
+	 * Update Customer Data
+	 * @param customer
+	 * @param id
+	 * @return
+	 */
 	public Customer updateCustomer(Customer customer, long id) {
 
 		Optional<Customer> customerOptional = customerRepository.findById(id);

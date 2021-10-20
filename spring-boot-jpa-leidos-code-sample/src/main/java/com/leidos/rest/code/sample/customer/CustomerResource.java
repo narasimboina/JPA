@@ -2,6 +2,7 @@ package com.leidos.rest.code.sample.customer;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,12 +17,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.leidos.rest.code.sample.customer.service.CustomerService;
 
+/**
+ * CustomerResource Rest API
+ */
 @RestController
 public class CustomerResource {
 
 	@Autowired
 	private CustomerService customerService;
 
+	/**
+	 * Rest API call for
+	 * @return
+	 */
 	@GetMapping("/customers")
 	public List<Customer> retrieveAllCustomers() {
 		return customerService.retrieveAllCustomers();
