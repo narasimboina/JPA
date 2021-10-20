@@ -1,51 +1,19 @@
 package com.leidos.rest.code.sample.customer.service;
 
 import java.util.List;
-import java.util.Optional;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import com.leidos.rest.code.sample.customer.Customer;
-import com.leidos.rest.code.sample.customer.CustomerNotFoundException;
-import com.leidos.rest.code.sample.customer.repository.CustomerRepository;
 
-@Service
-public class CustomerService {
-	@Autowired
-	private CustomerRepository customerRepository;
+public interface CustomerService {
 
-	public List<Customer> retrieveAllCustomers() {
-		return customerRepository.findAll();
-	}
+	public List<Customer> retrieveAllCustomers();
 
-	public Customer retrieveCustomer(long id) {
-		Optional<Customer> customer = customerRepository.findById(id);
+	public Customer retrieveCustomer(long id) ;
 
-		if (!customer.isPresent())
-			throw new CustomerNotFoundException("id-" + id);
+	public void deleteCustomer(long id);
 
-		return customer.get();
-	}
+	public Customer createCustomer(Customer customer);
 
-	public void deleteCustomer(long id) {
-		customerRepository.deleteById(id);
-	}
-
-	public Customer createCustomer(Customer customer) {
-		return customerRepository.save(customer);
-	}
-
-	public Customer updateCustomer(Customer customer, long id) {
-
-		Optional<Customer> customerOptional = customerRepository.findById(id);
-
-		if (customerOptional.isPresent()) {
-			customer.setId(id);
-			return customerRepository.save(customer);
-		}
-
-		return null;
-	}
+	public Customer updateCustomer(Customer customer, long id);
 
 }
