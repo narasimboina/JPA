@@ -1,8 +1,7 @@
-package com.leidos.rest.code.sample;
+package com.leidos.rest.code.sample.customer.service;
 
 import com.leidos.rest.code.sample.customer.Customer;
 import com.leidos.rest.code.sample.customer.repository.CustomerRepository;
-import com.leidos.rest.code.sample.customer.service.CustomerService;
 import com.leidos.rest.code.sample.customer.service.impl.CustomerServiceImpl;
 import org.junit.Before;
 import org.junit.Test;
@@ -26,7 +25,7 @@ import static org.mockito.Mockito.when;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class CustomerApplicationTests {
+public class CustomerServiceTests {
 
     @InjectMocks
     @Autowired

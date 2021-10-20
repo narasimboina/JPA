@@ -15,7 +15,7 @@ public class CustomerResourceTest {
 	private TestRestTemplate restTemplate;
 
 	@Test
-	public void getCustomerByID() throws JSONException {
+	public void getCustomerById() throws JSONException {
 
 		String customer = this.restTemplate.getForObject("/customers/100", String.class);
 		JSONAssert.assertEquals(
